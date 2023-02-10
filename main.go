@@ -1,10 +1,20 @@
 package main
 
 import (
-	"github.com/jonggu/jakecoin/person"
+	"crypto/sha256"
+	"fmt"
 )
 
+type block struct {
+	data     string
+	hash     string
+	prevHash string
+}
+
 func main() {
-	jake := person.Person{}
-	jake.SetDetails("Jake", 32)
+	genesisBlock := block{"Genesis Block", "", ""}
+	hash := sha256.Sum256([]byte(genesisBlock.data + genesisBlock.prevHash))
+	haxHash := fmt.Sprintf("%x", hash)
+	genesisBlock.hash = haxHash
+	fmt.Println(genesisBlock)
 }
