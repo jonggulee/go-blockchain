@@ -82,9 +82,9 @@ func block(rw http.ResponseWriter, r *http.Request) {
 	block, err := blockchain.GetBlockchain().GetBlock(id)
 	encoder := json.NewEncoder(rw)
 	if err == blockchain.ErrNotFound {
-		encoder.Encode(errorResponse{fmt.Sprint(err)})
+		utils.HandleErr(encoder.Encode(errorResponse{fmt.Sprint(err)}))
 	} else {
-		fmt.Println(block)
+		utils.HandleErr(encoder.Encode(block))
 	}
 }
 
