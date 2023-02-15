@@ -1,7 +1,9 @@
 package main
 
-import "github.com/jonggu/jakecoin/cli"
+import (
+	"github.com/jonggu/jakecoin/blockchain"
+)
 
 func main() {
-	cli.Start()
+	blockchain.Blockchain()
 }

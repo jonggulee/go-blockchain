@@ -1,6 +1,8 @@
 package db
 
 import (
+	"fmt"
+
 	"github.com/boltdb/bolt"
 	"github.com/jonggu/jakecoin/utils"
 )
@@ -27,4 +29,23 @@ func DB() *bolt.DB {
 		utils.HandleErr(err)
 	}
 	return db
+}
+
+func SaveBlock(hash string, data []byte) {
+	fmt.Printf("Saving Block %s\nData: %b\n ", hash, data)
+	err := DB().Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte(blocksBucket))
+		err := bucket.Put([]byte(hash), data)
+		return err
+	})
+	utils.HandleErr(err)
+}
+
+func SaveBlockchain(data []byte) {
+	err := DB().Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte(dataBucket))
+		err := bucket.Put([]byte("checkpoint"), data)
+		return err
+	})
+	utils.HandleErr(err)
 }
