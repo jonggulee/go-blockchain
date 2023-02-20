@@ -37,7 +37,7 @@ func FindBlock(hash string) (*Block, error) {
 }
 
 func createBlock(data, prevHash string, hight int) *Block {
-	block := Block{
+	block := &Block{
 		Data:     data,
 		Hash:     "",
 		PrevHash: prevHash,
@@ -46,5 +46,5 @@ func createBlock(data, prevHash string, hight int) *Block {
 	payload := block.Data + block.PrevHash + fmt.Sprint(block.Height)
 	block.Hash = fmt.Sprintf("%x", sha256.Sum256([]byte(payload)))
 	block.persist()
-	return &block
+	return block
 }
