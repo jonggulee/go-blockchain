@@ -10,10 +10,12 @@ import (
 )
 
 type Block struct {
-	Data     string `json:"data"`
-	Hash     string `json:"Hash"`
-	PrevHash string `json:"prevHash,omitempty"`
-	Height   int    `json:"Height"`
+	Data       string `json:"data"`
+	Hash       string `json:"Hash"`
+	PrevHash   string `json:"prevHash,omitempty"`
+	Height     int    `json:"Height"`
+	Difficulty int    `json:"difficulty"`
+	Nonce      int    `json:"nonce"`
 }
 
 func (b *Block) persist() {
