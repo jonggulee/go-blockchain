@@ -9,6 +9,8 @@ import (
 	"github.com/jonggu/jakecoin/utils"
 )
 
+const difficulty int = 2
+
 type Block struct {
 	Data       string `json:"data"`
 	Hash       string `json:"Hash"`
