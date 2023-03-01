@@ -6,10 +6,6 @@ http://localhost:4000/blocks
 ###
 POST http://localhost:4000/blocks
 
-{
-    "message": "Mine me"
-}
-
 ###
 http://localhost:4000/blocks/3
 
@@ -18,7 +14,7 @@ POST http://localhost:4000/transactions
 
 {
     "to":"yoojin",
-    "amount":80
+    "amount":30
 }
 
 ###
@@ -29,3 +25,5 @@ http://localhost:4000/balance/jake?total=true
 
 ###
 http://localhost:4000/mempool
+###
+http://localhost:4000/balance/yoojin

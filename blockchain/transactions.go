@@ -90,10 +90,17 @@ func makeTx(from, to string, amount int) (*Tx, error) {
 
 func (m *mempool) AddTx(to string, amount int) error {
 	tx, err := makeTx("jake", to, amount)
-	// utils.HandleErr(err)
 	if err != nil {
 		return err
 	}
 	m.Txs = append(m.Txs, tx)
 	return nil
+}
+
+func (m *mempool) TxToConfirm() []*Tx {
+	coinbase := makeCoinbaseTx("jake")
+	txs := m.Txs
+	txs = append(txs, coinbase)
+	m.Txs = nil
+	return txs
 }
