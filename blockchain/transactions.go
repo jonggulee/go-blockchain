@@ -1,7 +1,6 @@
 package blockchain
 
 import (
-	"errors"
 	"time"
 
 	"github.com/jonggu/jakecoin/utils"
@@ -29,18 +28,25 @@ func (t *Tx) getID() {
 }
 
 type TxIn struct {
-	Owner  string
-	Amount int
+	TxID  string `json:"txId"`
+	Index int    `json:"index"`
+	Owner string `json:"owner"`
 }
 
 type TxOut struct {
-	Owner  string
-	Amount int
+	Owner  string `json:"owner"`
+	Amount int    `json:"amount"`
+}
+
+type UTxOut struct {
+	Index  int
+	TxID   string
+	Amount string
 }
 
 func makeCoinbaseTx(address string) *Tx {
 	txIns := []*TxIn{
-		{"COINBASE", minerReward},
+		{"", -1, "COINBASE"},
 	}
 	txOuts := []*TxOut{
 		{address, minerReward},
@@ -56,36 +62,7 @@ func makeCoinbaseTx(address string) *Tx {
 }
 
 func makeTx(from, to string, amount int) (*Tx, error) {
-	if Blockchain().BalanceByAddress(from) < amount {
-		return nil, errors.New("not enough money")
-	}
-	var txIns []*TxIn
-	var txOuts []*TxOut
-	total := 0
-	oldTxOuts := Blockchain().TxOutsByAddress(from)
-	for _, txOut := range oldTxOuts {
-		if total > amount {
-			break
-		}
-		txIn := &TxIn{txOut.Owner, txOut.Amount}
-		txIns = append(txIns, txIn)
-		total += txOut.Amount
-	}
-	change := total - amount
-	if change != 0 {
-		changeTxOut := &TxOut{from, change}
-		txOuts = append(txOuts, changeTxOut)
-	}
-	txOut := &TxOut{to, amount}
-	txOuts = append(txOuts, txOut)
-	tx := &Tx{
-		Id:        "",
-		Timestemp: int(time.Now().Unix()),
-		TxIns:     txIns,
-		TxOuts:    txOuts,
-	}
-	tx.getID()
-	return tx, nil
+
 }
 
 func (m *mempool) AddTx(to string, amount int) error {
