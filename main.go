@@ -1,11 +1,9 @@
 package main
 
-import (
-	"github.com/jonggu/jakecoin/cli"
-	"github.com/jonggu/jakecoin/db"
-)
+import "github.com/jonggu/jakecoin/wallet"
 
 func main() {
-	defer db.Close()
-	cli.Start()
+	// defer db.Close()
+	// cli.Start()
+	wallet.Start()
 }
