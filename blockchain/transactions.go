@@ -29,15 +29,29 @@ func (t *Tx) getID() {
 	t.ID = utils.Hash(t)
 }
 
+func (t *Tx) sign() {
+	for _, txIn := range t.TxIns {
+		txIn.Signature = wallet.Sign(t.ID, wallet.Wallet())
+	}
+}
+
+func validate(tx *Tx) bool {
+	valid := true
+	for _, txIn := range tx.TxIns {
+		prevTx := FindTx(Blockchain(), txIn.TxID)
+	}
+	return valid
+}
+
 type TxIn struct {
-	TxID  string `json:"txId"`
-	Index int    `json:"index"`
-	Owner string `json:"owner"`
+	TxID      string `json:"txId"`
+	Index     int    `json:"index"`
+	Signature string `json:"signature"`
 }
 
 type TxOut struct {
-	Owner  string `json:"owner"`
-	Amount int    `json:"amount"`
+	Address string `json:"address"`
+	Amount  int    `json:"amount"`
 }
 
 type UTxOut struct {
