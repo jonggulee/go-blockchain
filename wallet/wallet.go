@@ -1,12 +1,10 @@
 package wallet
 
 import (
-	"crypto/ecdsa"
-	"crypto/elliptic"
-	"crypto/rand"
 	"crypto/x509"
 	"encoding/hex"
 	"fmt"
+	"math/big"
 
 	"github.com/jonggu/jakecoin/utils"
 )
@@ -18,20 +16,24 @@ const (
 )
 
 func Start() {
-	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	privBytes, err := hex.DecodeString(privateKey)
 	utils.HandleErr(err)
 
-	keyAsByte, err := x509.MarshalECPrivateKey(privateKey)
-	fmt.Printf("%x\n\n\n\n", keyAsByte)
+	_, err = x509.ParseECPrivateKey(privBytes)
 	utils.HandleErr(err)
 
-	hashAsBytes, err := hex.DecodeString(hashedMessage)
-	utils.HandleErr(err)
+	sigBytes, err := hex.DecodeString(signature)
 
-	r, s, err := ecdsa.Sign(rand.Reader, privateKey, hashAsBytes)
-	utils.HandleErr(err)
+	rBytes := sigBytes[:len(sigBytes)/2]
+	sBytes := sigBytes[len(sigBytes)/2:]
 
-	signature := append(r.Bytes(), s.Bytes()...)
+	fmt.Printf("%d\n\n%d\n\n%d\n\n", sigBytes, rBytes, sBytes)
 
-	fmt.Printf("%x\n", signature)
+	var bigR, bigS = big.Int{}, big.Int{}
+
+	bigR.SetBytes(rBytes)
+	bigS.SetBytes(sBytes)
+
+	fmt.Println(bigR, bigS)
+
 }
