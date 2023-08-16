@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/jonggu/jakecoin/cli"
-	"github.com/jonggu/jakecoin/db"
-	"github.com/jonggu/jakecoin/wallet"
+	"github.com/jonggulee/go-coin/cli"
+	"github.com/jonggulee/go-coin/db"
+	"github.com/jonggulee/go-coin/wallet"
 )
 
 func main() {

@@ -4,8 +4,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/jonggu/jakecoin/utils"
-	"github.com/jonggu/jakecoin/wallet"
+	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-coin/wallet"
 )
 
 const (

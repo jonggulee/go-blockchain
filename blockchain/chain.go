@@ -3,8 +3,8 @@ package blockchain
 import (
 	"sync"
 
-	"github.com/jonggu/jakecoin/db"
-	"github.com/jonggu/jakecoin/utils"
+	"github.com/jonggulee/go-coin/db"
+	"github.com/jonggulee/go-coin/utils"
 )
 
 const (

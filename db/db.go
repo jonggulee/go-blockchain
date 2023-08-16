@@ -2,7 +2,7 @@ package db
 
 import (
 	"github.com/boltdb/bolt"
-	"github.com/jonggu/jakecoin/utils"
+	"github.com/jonggulee/go-coin/utils"
 )
 
 const (
