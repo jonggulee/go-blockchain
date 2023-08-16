@@ -1,1 +1,1 @@
-# jakecoin
+# go-coin
