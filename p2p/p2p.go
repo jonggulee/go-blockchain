@@ -3,7 +3,6 @@ package p2p
 import (
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/gorilla/websocket"
 	"github.com/jonggulee/go-coin/utils"
@@ -19,9 +18,7 @@ func Upgrade(rw http.ResponseWriter, r *http.Request) {
 	}
 	conn, err := upgrader.Upgrade(rw, r, nil)
 	utils.HandleErr(err)
-	peer := initPeer(conn, ip, openPort)
-	time.Sleep(20 * time.Second)
-	peer.inbox <- []byte("Hello from 3000!")
+	initPeer(conn, ip, openPort)
 }
 
 func AddPeer(address, port, openPort string) {
