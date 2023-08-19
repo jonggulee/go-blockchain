@@ -9,5 +9,6 @@ require (
 
 require (
 	github.com/gorilla/websocket v1.5.0 // indirect
+	go.etcd.io/bbolt v1.3.7 // indirect
 	golang.org/x/sys v0.11.0 // indirect
 )
