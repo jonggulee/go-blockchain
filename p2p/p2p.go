@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/websocket"
-	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-blockchain/utils"
 )
 
 var upgrader = websocket.Upgrader{}

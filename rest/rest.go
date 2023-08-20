@@ -7,10 +7,10 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/jonggulee/go-coin/blockchain"
-	"github.com/jonggulee/go-coin/p2p"
-	"github.com/jonggulee/go-coin/utils"
-	"github.com/jonggulee/go-coin/wallet"
+	"github.com/jonggulee/go-blockchain/blockchain"
+	"github.com/jonggulee/go-blockchain/p2p"
+	"github.com/jonggulee/go-blockchain/utils"
+	"github.com/jonggulee/go-blockchain/wallet"
 )
 
 var port string

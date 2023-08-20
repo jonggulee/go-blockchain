@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jonggulee/go-coin/db"
-	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-blockchain/db"
+	"github.com/jonggulee/go-blockchain/utils"
 )
 
 type Block struct {

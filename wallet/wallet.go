@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-blockchain/utils"
 )
 
 const (

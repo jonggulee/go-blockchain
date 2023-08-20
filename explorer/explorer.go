@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"text/template"
 
-	"github.com/jonggulee/go-coin/blockchain"
+	"github.com/jonggulee/go-blockchain/blockchain"
 )
 
 const (

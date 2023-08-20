@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/jonggulee/go-coin/blockchain"
-	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-blockchain/blockchain"
+	"github.com/jonggulee/go-blockchain/utils"
 )
 
 type MessageKind int

@@ -3,8 +3,8 @@ package blockchain
 import (
 	"sync"
 
-	"github.com/jonggulee/go-coin/db"
-	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-blockchain/db"
+	"github.com/jonggulee/go-blockchain/utils"
 )
 
 const (

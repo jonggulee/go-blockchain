@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/jonggulee/go-coin/utils"
+	"github.com/jonggulee/go-blockchain/utils"
 	bolt "go.etcd.io/bbolt"
 )
 

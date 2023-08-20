@@ -6,8 +6,8 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/jonggulee/go-coin/explorer"
-	"github.com/jonggulee/go-coin/rest"
+	"github.com/jonggulee/go-blockchain/explorer"
+	"github.com/jonggulee/go-blockchain/rest"
 )
 
 func usage() {

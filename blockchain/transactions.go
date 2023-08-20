@@ -4,8 +4,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/jonggulee/go-coin/utils"
-	"github.com/jonggulee/go-coin/wallet"
+	"github.com/jonggulee/go-blockchain/utils"
+	"github.com/jonggulee/go-blockchain/wallet"
 )
 
 const (
