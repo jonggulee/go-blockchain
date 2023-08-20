@@ -1,12 +1,15 @@
 package db
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/jonggulee/go-blockchain/utils"
 	bolt "go.etcd.io/bbolt"
 )
 
 const (
-	dbname       = "blockchain.db"
+	dbname       = "blockchain"
 	dataBucket   = "data"
 	blocksBucket = "blocks"
 	checkpoint   = "checkpoint"
@@ -14,9 +17,14 @@ const (
 
 var db *bolt.DB
 
+func getDbName() string {
+	port := os.Args[2][6:]
+	return fmt.Sprintf("%s_%s.db", dbname, port)
+}
+
 func DB() *bolt.DB {
 	if db == nil {
-		dbPointer, err := bolt.Open(dbname, 0600, nil)
+		dbPointer, err := bolt.Open(getDbName(), 0600, nil)
 		db = dbPointer
 		utils.HandleErr(err)
 		err = db.Update(func(tx *bolt.Tx) error {
