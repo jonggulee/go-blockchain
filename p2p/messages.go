@@ -70,5 +70,6 @@ func handleMsg(m *Message, p *peer) {
 		fmt.Printf("Recieved all the blocks from %s\n", p.key)
 		var payload []*blockchain.Block
 		utils.HandleErr(json.Unmarshal(m.Payload, &payload))
+		blockchain.Blockchain().Replace(payload)
 	}
 }
