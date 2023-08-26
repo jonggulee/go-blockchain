@@ -32,11 +32,11 @@ http://localhost:4000/balance/38de03850295d4e0918416692deacaf4afcceb22e6f1998618
 ###
 http://localhost:4000/balance/yoojin
 ###
-POST http://localhost:4000/peers
+POST http://localhost:3000/peers
 
 {
     "address": "127.0.0.1",
-    "port": "3000"
+    "port": "2000"
 }
 ###
 http://localhost:4000/peers
