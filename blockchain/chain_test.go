@@ -57,28 +57,22 @@ func TestBlockchain(t *testing.T) {
 }
 
 func TestBlocks(t *testing.T) {
-	fakeBlocks := 0
+	blocks := []*Block{
+		{PrevHash: "x"},
+		{PrevHash: ""},
+	}
+	fakeBlock := 0
 	dbStorage = fakeDB{
 		fakeFindBlock: func() []byte {
-			var b *Block
-			if fakeBlocks == 0 {
-				b = &Block{
-					Height:   2,
-					PrevHash: "x",
-				}
-			}
-			if fakeBlocks == 1 {
-				b = &Block{
-					Height: 1,
-				}
-			}
-			fakeBlocks++
-			return utils.ToBytes(b)
+			defer func() {
+				fakeBlock++
+			}()
+			return utils.ToBytes(blocks[fakeBlock])
 		},
 	}
 	bc := &blockchain{}
-	blocks := Blocks(bc)
-	if reflect.TypeOf(blocks) != reflect.TypeOf([]*Block{}) {
+	blocksResult := Blocks(bc)
+	if reflect.TypeOf(blocksResult) != reflect.TypeOf([]*Block{}) {
 		t.Error("Blocks() should return a slice of blocks")
 	}
 }
